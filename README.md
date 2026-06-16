@@ -70,15 +70,21 @@ An AI-powered Applicant Tracking System (ATS) that analyzes resumes against job 
 4. **Install dependencies**
 
    ```bash
-   pip install flask google-genai PyPDF2
+   pip install -r requirements.txt
    ```
 
 5. **Configure your API key**
 
-   Open `main.py` and replace the API key on line 15 with your own Gemini API key:
+   Copy the example environment file and add your Gemini API key:
 
-   ```python
-   client = genai.Client(api_key="YOUR_GEMINI_API_KEY")
+   ```bash
+   cp .env.example .env
+   ```
+
+   Edit `.env` and set your API key:
+
+   ```env
+   GEMINI_API_KEY=your_gemini_api_key_here
    ```
 
 6. **Run the application**

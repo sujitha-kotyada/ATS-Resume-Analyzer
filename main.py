@@ -1,10 +1,14 @@
 import os
-from flask import Flask, request, jsonify, render_template
-
-from google import genai
-import PyPDF2
+import json
+import re
 import time
 
+from flask import Flask, request, jsonify, render_template
+from google import genai
+import PyPDF2
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ==============================
 # CONFIG
@@ -12,7 +16,10 @@ import time
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-client = genai.Client(api_key="AIzaSyDGE8UiKyQE8UFatFFyU8aVnL0rmK8nkPM")
+API_KEY = os.environ.get("GEMINI_API_KEY")
+if not API_KEY:
+    raise ValueError("GEMINI_API_KEY environment variable is required. Create a .env file with GEMINI_API_KEY=your_key")
+client = genai.Client(api_key=API_KEY)
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -136,14 +143,11 @@ JSON FORMAT:
 # API ROUTE (PDF UPLOAD)
 # ==============================
 
-import json
 @app.route("/", methods=["GET"])
 def index():
     return render_template("index.html")
 
-import json
 def extract_json(text):
-    import re, json
     match = re.search(r"\{.*\}", text, re.DOTALL)
     if not match:
         raise ValueError("No JSON found in Gemini response")
