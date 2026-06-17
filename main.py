@@ -169,8 +169,10 @@ def analyze():
         resume_file.save(pdf_path)
 
         resume_text = extract_text_from_pdf(pdf_path)
-        print("===== EXTRACTED RESUME TEXT =====")
-        print(resume_text[:1000])  # print first 1000 chars
+        try:
+            print(resume_text[:1000])  # print first 1000 chars
+        except UnicodeEncodeError:
+            print(resume_text[:1000].encode('ascii', errors='replace').decode('ascii'))
         print("================================")
         
         parsed_resume = parse_resume(resume_text)
@@ -180,7 +182,10 @@ def analyze():
         try:
             ats_result = extract_json(ats_result_text)
         except Exception as e:
-            print("RAW ATS RESPONSE:", ats_result_text)
+            try:
+                print("RAW ATS RESPONSE:", ats_result_text)
+            except UnicodeEncodeError:
+                print("RAW ATS RESPONSE:", ats_result_text.encode('ascii', errors='replace').decode('ascii'))
             return jsonify({"error": "Invalid ATS JSON response"}), 500
 
         return jsonify({

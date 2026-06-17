@@ -7,6 +7,23 @@ An AI-powered Applicant Tracking System (ATS) that analyzes resumes against job 
 ![Gemini](https://img.shields.io/badge/Google%20Gemini-AI-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-CDN-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
+## 🎬 Demo
+
+Below is a detailed demonstration of the ATS Resume Analyzer in action:
+
+### 🖥️ Landing Page
+![ATS Resume Analyzer Landing Page](assets/ats_landing.png)
+
+### 📊 Evaluation Results (Match Score & Skills Gap)
+![ATS Resume Analyzer Evaluation Results Top](assets/ats_results_top.png)
+
+### 💡 Resume Strengths & Suggestions
+![ATS Resume Analyzer Evaluation Results Bottom](assets/ats_results_bottom.png)
+
+### 🎥 Walkthrough Video
+Watch the interactive walkthrough video showing the file upload, job description input, and analysis execution:
+![ATS Resume Analyzer Walkthrough Video](assets/demo_recording.webp)
+
 ---
 
 ## ✨ Features
