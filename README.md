@@ -15,14 +15,11 @@ Below is a detailed demonstration of the ATS Resume Analyzer in action:
 ![ATS Resume Analyzer Landing Page](assets/ats_landing.png)
 
 ### 📊 Evaluation Results (Match Score & Skills Gap)
-![ATS Resume Analyzer Evaluation Results Top](assets/ats_results_top.png)
+![ATS Resume Analyzer Evaluation Results Top](assets/image.png)
 
 ### 💡 Resume Strengths & Suggestions
-![ATS Resume Analyzer Evaluation Results Bottom](assets/ats_results_bottom.png)
+![ATS Resume Analyzer Evaluation Results Bottom](assets/image2.png)
 
-### 🎥 Walkthrough Video
-Watch the interactive walkthrough video showing the file upload, job description input, and analysis execution:
-![ATS Resume Analyzer Walkthrough Video](assets/demo_recording.webp)
 
 ---
 
