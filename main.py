@@ -16,10 +16,8 @@ load_dotenv()
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-API_KEY = os.environ.get("GEMINI_API_KEY")
-if not API_KEY:
-    raise ValueError("GEMINI_API_KEY environment variable is required. Create a .env file with GEMINI_API_KEY=your_key")
-client = genai.Client(api_key=API_KEY)
+API_KEY = os.environ.get("GEMINI_API_KEY", "")
+client = genai.Client(api_key=API_KEY) if API_KEY else None
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -29,6 +27,12 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 # ==============================
 def call_gemini_api(prompt, model="gemini-3.8-flash", max_retries=5):
     """Call Gemini API with exponential backoff retry for 503 errors."""
+    global client
+    if client is None:
+        key = os.environ.get("GEMINI_API_KEY")
+        if not key:
+            raise ValueError("GEMINI_API_KEY environment variable is missing. Please set GEMINI_API_KEY in Render's Environment settings.")
+        client = genai.Client(api_key=key)
     for attempt in range(max_retries):
         try:
             response = client.models.generate_content(
