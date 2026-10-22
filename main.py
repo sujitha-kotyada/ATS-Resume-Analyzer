@@ -27,7 +27,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 # ==============================
 # RETRY HELPER
 # ==============================
-def call_gemini_api(prompt, model="gemini-2.5-flash", max_retries=5):
+def call_gemini_api(prompt, model="gemini-3.8-flash", max_retries=5):
     """Call Gemini API with exponential backoff retry for 503 errors."""
     for attempt in range(max_retries):
         try:
